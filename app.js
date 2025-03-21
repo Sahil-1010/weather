@@ -149,10 +149,10 @@ function setAnimationAndSound(condition) {
     let animationSrc = "";
     let audioSrc = "";
 
-    if (condition.includes("sunny","clear")) {
+    if (condition.includes("sunny","clear","starry")) {
         animationSrc = "https://lottie.host/1bea50d1-2c27-4c64-acbf-055eccf6f8d3/qnFBUscTTV.lottie";
         audioSrc = "sunny.mp3";
-    } else if (condition.includes("thunder")) {
+    } else if (condition.includes("thunder","storm")) {
         animationSrc = "https://lottie.host/ce066be1-ed70-4411-acd2-d6cd75045d0f/EBmVLT9gAi.lottie";
         audioSrc = "thunder.mp3";
     }else if (condition.includes("rain")) {
@@ -164,10 +164,10 @@ function setAnimationAndSound(condition) {
     } else if (condition.includes("snow")) {
         animationSrc = "https://lottie.host/f250210f-ed58-4138-aa11-7e8ba85d5807/xki7M3r2LF.lottie";
         audioSrc = "snow.mp3";
-    } else if (condition.includes("fog")) {
+    } else if (condition.includes("foggy","mist","fog")) {
         animationSrc = "https://lottie.host/ee42ca4c-bd93-41d8-bc75-d95c82797a84/ohTGOIHIcT.lottie";
         audioSrc = "foggy.mp3";
-    } else if (condition.includes("cyclone","tornedo")) {
+    } else if (condition.includes("cyclone","tornado")) {
         animationSrc = "https://lottie.host/df9db381-749b-4ddd-9ab6-65ad693463f1/vNYgyWmWUJ.lottie";
         audioSrc = "cyclone.mp3";
     }
