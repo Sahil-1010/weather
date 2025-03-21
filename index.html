@@ -6,64 +6,24 @@
     <title>Weather Forecast</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-   
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 <body>
     <div class="container">
         <h2>🌤️ Weather Forecast</h2>
         <input type="text" id="city" placeholder="Enter city">
-        <button onclick="getWeather()">Get Weather</button>
+        <button onclick="getWeather()">Get Weather</button><br>
+        <button class="newLoc" onclick="getLocation()">My Location</button>
         <div id="weather-info" class="info-box"></div>
         <div id="time" class="info-box"></div>
+        <div class="animation">
+            <div id="animation" class="info-box"></div>
+        </div> 
+        <audio id="weather-audio" loop></audio>
         <div id="map"></div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        let map;
-
-        async function getWeather() {
-            const city = document.getElementById('city').value || 'London';
-            const apiKey = 'c86fe9a96dc544329bd164355252003';
-            const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.error) {
-                    document.getElementById('weather-info').innerHTML = `<p class='error'>Error: ${data.error.message}</p>`;
-                    return;
-                }
-
-                document.getElementById('weather-info').innerHTML = `
-                    <h3>${data.location.name}, ${data.location.country}</h3>
-                    <img src="${data.current.condition.icon}" alt="Weather icon">
-                    <p>${data.current.condition.text}</p>
-                    <p class="temp">${data.current.temp_c}&deg;C</p>
-                `;
-
-                document.getElementById('time').innerHTML = `<p>Local Time: ${data.location.localtime}</p>`;
-
-                // Show OpenStreetMap with Leaflet.js
-                const lat = data.location.lat;
-                const lon = data.location.lon;
-
-                if (!map) {
-                    map = L.map('map').setView([lat, lon], 10);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; OpenStreetMap contributors'
-                    }).addTo(map);
-                    L.marker([lat, lon]).addTo(map).bindPopup(`${data.location.name}, ${data.location.country}`).openPopup();
-                } else {
-                    map.setView([lat, lon], 10);
-                    L.marker([lat, lon]).addTo(map).bindPopup(`${data.location.name}, ${data.location.country}`).openPopup();
-                }
-
-            } catch (error) {
-                document.getElementById('weather-info').innerHTML = "<p class='error'>Error fetching data</p>";
-            }
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
