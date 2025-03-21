@@ -149,28 +149,29 @@ function setAnimationAndSound(condition) {
     let animationSrc = "";
     let audioSrc = "";
 
-    if (condition.includes("sunny","clear","starry")) {
+    if (["sunny", "clear", "starry"].some(word => condition.includes(word))) {
         animationSrc = "https://lottie.host/1bea50d1-2c27-4c64-acbf-055eccf6f8d3/qnFBUscTTV.lottie";
         audioSrc = "sunny.mp3";
-    } else if (condition.includes("thunder","storm")) {
+    } else if (["thunder", "storm"].some(word => condition.includes(word))) {
         animationSrc = "https://lottie.host/ce066be1-ed70-4411-acd2-d6cd75045d0f/EBmVLT9gAi.lottie";
         audioSrc = "thunder.mp3";
-    }else if (condition.includes("rain")) {
+    } else if (condition.includes("rain")) {
         animationSrc = "https://lottie.host/dfb447ff-827c-4818-a475-71414596c0f9/JQSlHjOEd0.lottie";
         audioSrc = "rain.mp3"; 
-    }else if (condition.includes("cloud","overcast")) {
+    } else if (["overcast", "cloud"].some(word => condition.includes(word))) {
         animationSrc = "https://lottie.host/42eff85b-b8c7-4feb-b53b-5b3f7315f3d2/KJmhTrnzsC.lottie";
         audioSrc = "overcast.mp3";
     } else if (condition.includes("snow")) {
         animationSrc = "https://lottie.host/f250210f-ed58-4138-aa11-7e8ba85d5807/xki7M3r2LF.lottie";
         audioSrc = "snow.mp3";
-    } else if (condition.includes("foggy","mist","fog")) {
+    } else if (["foggy", "mist", "fog"].some(word => condition.includes(word))) {
         animationSrc = "https://lottie.host/ee42ca4c-bd93-41d8-bc75-d95c82797a84/ohTGOIHIcT.lottie";
         audioSrc = "foggy.mp3";
-    } else if (condition.includes("cyclone","tornado")) {
+    } else if (["cyclone", "tornado"].some(word => condition.includes(word))) {
         animationSrc = "https://lottie.host/df9db381-749b-4ddd-9ab6-65ad693463f1/vNYgyWmWUJ.lottie";
         audioSrc = "cyclone.mp3";
     }
+    
 
     // Display animation
     document.getElementById('animation').innerHTML = `<dotlottie-player src="${animationSrc}" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>`;
